@@ -1,0 +1,103 @@
+## [题目描述(简单)](https://leetcode-cn.com/problems/plus-one/)
+<p>给定一个由<strong>整数</strong>组成的<strong>非空</strong>数组所表示的非负整数，在该数的基础上加一。</p>
+
+<p>最高位数字存放在数组的首位， 数组中每个元素只存储<strong>单个</strong>数字。</p>
+
+<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
+
+<p><strong>示例&nbsp;1:</strong></p>
+
+<pre><strong>输入:</strong> [1,2,3]
+<strong>输出:</strong> [1,2,4]
+<strong>解释:</strong> 输入数组表示数字 123。
+</pre>
+
+<p><strong>示例&nbsp;2:</strong></p>
+
+<pre><strong>输入:</strong> [4,3,2,1]
+<strong>输出:</strong> [4,3,2,2]
+<strong>解释:</strong> 输入数组表示数字 4321。
+</pre>
+
+## 思路
+从后往前遍历，如果+1后要进位，则置位，下次循环时再处理+1，如果不需要进位则在最前面插入数字
+
+## 代码
+```c++
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        vector<int> out;
+        int i;
+        int flag=0;
+        for(i=digits.size()-1;i>=0;i--){
+            if(flag==1 || i == digits.size()-1){
+                if(digits[i]==9){
+                    out.insert(out.begin(),0);
+                    flag=1;
+                } else {
+                    out.insert(out.begin(),digits[i]+1);
+                    flag=0;
+                }
+            }else{
+                out.insert(out.begin(),digits[i]);
+                flag=0;
+            }
+        }
+        //遍历完所有位后如果还有进位，则表示多出一位，要再进一位
+        if(flag==1){
+            out.insert(out.begin(),1);
+        }
+        return out;
+    }
+};
+```
+## 其他思路
+如果不是要进位的数，直接+1后其余的返回原数组即可  
+如果是99这种，+1后多出一位，要新建一个多一位的数组，将首位置1，其余为0
+
+## 代码
+```c++
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        int i;
+        int flag=0;
+        for(i=digits.size()-1;i>=0;i--){
+            digits[i]++;
+            digits[i]=digits[i]%10;
+            if(digits[i]!=0){
+                //如果＝0表示要进位，继续遍历；!=0则表示不需要进位，直接返回
+                return digits;
+            }
+        }
+        //遍历完所有位后如果还没有返回，则一定是999这种，返回1000
+        vector<int> out(digits.size()+1);
+        out[0]=1;
+        return out;
+    }
+};
+```
+
+## 代码
+```c++
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        int len=digits.size();
+        for(int i=len-1;i>=0;i--){
+            //找到第一位不为9的，该位+1，其余为9的位均变为0
+            if(digits[i]!=9){
+                digits[i]++;
+                return digits;
+            }else{
+                digits[i]=0;
+                continue;
+            }
+        }
+        //遍历完所有位后如果还没有返回，则一定是999这种，当前已变为000，要添1
+        digits.insert(digits.begin(),1);
+        return digits;
+    }
+};
+```
