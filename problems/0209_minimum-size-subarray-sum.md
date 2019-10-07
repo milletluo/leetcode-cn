@@ -1,0 +1,72 @@
+## [题目描述(中等)](https://leetcode-cn.com/problems/template/)
+<p>给定一个含有&nbsp;<strong>n&nbsp;</strong>个正整数的数组和一个正整数&nbsp;<strong>s ，</strong>找出该数组中满足其和<strong> ≥ s </strong>的长度最小的连续子数组<strong>。</strong>如果不存在符合条件的连续子数组，返回 0。</p>
+
+<p><strong>示例:&nbsp;</strong></p>
+
+<pre><strong>输入:</strong> <code>s = 7, nums = [2,3,1,2,4,3]</code>
+<strong>输出:</strong> 2
+<strong>解释: </strong>子数组&nbsp;<code>[4,3]</code>&nbsp;是该条件下的长度最小的连续子数组。
+</pre>
+
+<p><strong>进阶:</strong></p>
+
+<p>如果你已经完成了<em>O</em>(<em>n</em>) 时间复杂度的解法, 请尝试&nbsp;<em>O</em>(<em>n</em> log <em>n</em>) 时间复杂度的解法。</p>
+
+## 思路
+暴力遍历，当相加和>=s时取较小值
+
+## 代码
+```c++
+class Solution {
+public:
+    int minSubArrayLen(int s, vector<int>& nums) {
+        int count=nums.size()+1,countTemp=0,sumTemp=0;
+        for(int i=0;i<nums.size();i++){
+            countTemp=0;
+            sumTemp=0;
+            for(int j=i;j<nums.size();j++){
+                countTemp++;
+                sumTemp+=nums[j];
+                if(sumTemp>=s){
+                    count=min(count,countTemp);
+                    break;
+                }
+            }
+        }
+        return count==nums.size()+1 ? 0 : count;
+    }
+};
+```
+## 其他思路
+[滑窗](https://leetcode-cn.com/problems/minimum-size-subarray-sum/solution/cxiang-xi-ti-jie-hua-dong-chuang-kou-by-youlookdel/)
+
+[二分](https://leetcode-cn.com/problems/minimum-size-subarray-sum/solution/shuang-zhi-zhen-on-qian-zhui-he-er-fen-onlogn-by-h/)
+
+## 代码
+```c++
+class Solution {
+public:
+    int minSubArrayLen(int s, vector<int>& nums) {
+        int ans = INT_MAX;
+        int end = 0; //滑窗的右边框
+        int sum = 0; //窗口间的和
+        int begin = 0; //滑窗的左边框
+        while(end < nums.size()) //滑窗的右边框不能超出界限
+        {
+            if(sum + nums[end] < s) //若滑窗之间的和小于s，右边框右移，sum增大
+            {
+                sum += nums[end];
+                ++ end;
+            }
+            else //若滑窗之间的和大于等于s，左边框右移，sum减小
+            {
+                if(end - begin < ans) //若当前符合条件的连续子数组比ans内记录的长度更小，则更新ans值
+                    ans = end - begin + 1;
+                sum = sum - nums[begin];
+                ++ begin;
+            }
+        }
+        return ans == INT_MAX? 0:ans;
+    }
+};
+```
