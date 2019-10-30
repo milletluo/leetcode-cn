@@ -68,7 +68,7 @@ int** minimumAbsDifference(int* arr, int arrSize, int* returnSize, int** returnC
     }
     *returnSize = count;
     output = (int**)malloc(sizeof(int*) * count);
-    retColSize = (int*)malloc(sizeof(int*) * count);
+    retColSize = (int*)malloc(sizeof(int) * count);
     for (int i = 0; i < count; i++) {
         output[i] = (int*)malloc(sizeof(int) * 2);
         retColSize[i] = 2;
