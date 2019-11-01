@@ -1,0 +1,76 @@
+## [最长上升子序列(中等)](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
+<div class="notranslate"><p>给定一个无序的整数数组，找到其中最长上升子序列的长度。</p>
+
+<p><strong>示例:</strong></p>
+
+<pre><strong>输入:</strong> <code>[10,9,2,5,3,7,101,18]
+</code><strong>输出: </strong>4 
+<strong>解释: </strong>最长的上升子序列是&nbsp;<code>[2,3,7,101]，</code>它的长度是 <code>4</code>。</pre>
+
+<p><strong>说明:</strong></p>
+
+<ul>
+	<li>可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。</li>
+	<li>你算法的时间复杂度应该为&nbsp;O(<em>n<sup>2</sup></em>) 。</li>
+</ul>
+
+<p><strong>进阶:</strong> 你能将算法的时间复杂度降低到&nbsp;O(<em>n</em> log <em>n</em>) 吗?</p>
+</div>
+
+## 思路
+暴力遍历，将较大的数加入数组并计数，同时记录最大值和次大值，如果遍历到的数小于最大值，但是大于次大值，则可以更新最大值
+
+## 代码
+```c
+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
+
+int lengthOfLIS(int* nums, int numsSize){
+    int subLen = 0;
+
+    for (int i = 0; i < numsSize; i++) {
+        int base = i;
+        int pre = base;
+        int count = 1;
+        for (int j = i + 1; j < numsSize; j++) {
+            if (nums[j] > nums[base]) {
+                pre = base; // 记录次大值下标
+                base = j; // 记录最大值下标
+                count++;
+            } else if (nums[j] > nums[pre]) { // 如果当前数小于前面最大值，但是大于次大值，则可以无损交换，更新最大值为较小的值
+                base = j;
+            }
+        }
+        subLen = MAX(subLen, count);
+    }
+    return subLen;
+}
+```
+## 其他思路-[动态规划](https://leetcode-cn.com/problems/longest-increasing-subsequence/solution/dong-tai-gui-hua-she-ji-fang-fa-zhi-pai-you-xi-jia/)
+1. dp[i] 表示以 nums[i] 这个数结尾的最长递增子序列的长度
+2. 状态转移方程 `dp[i] = max(dp[i], dp[j] + 1) for j in [0, i)` ,dp[i] > dp[j]
+3. dp数组应该全部初始化为1，因为子序列最少也要包含自己，所以长度最小为1
+## 代码
+```c
+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
+
+int lengthOfLIS(int* nums, int numsSize){
+    int subLen = 0;
+    // 不知有多少个，需要动态申请。如果是指定最大个数，直接用个大数组，如：int dp[10000];
+    int *dp = (int*)malloc(sizeof(int) * numsSize);
+    for(int i = 0; i < numsSize; i++) {
+        dp[i] = 1;
+    }
+    for (int i = 0; i < numsSize; i++) {
+        for (int j = 0; j < i; j++) {
+            if (nums[i] > nums[j]) {
+                dp[i] = MAX(dp[i], dp[j] + 1);
+            }
+        }
+    }
+    for (int i = 0; i < numsSize; i++) {
+        subLen = MAX(dp[i], subLen);
+    }
+    free(dp);
+    return subLen;
+}
+```

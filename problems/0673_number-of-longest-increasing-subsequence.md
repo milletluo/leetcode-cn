@@ -1,0 +1,64 @@
+## [最长递增子序列的个数(中等)](https://leetcode-cn.com/problems/number-of-longest-increasing-subsequence/)
+<div class="notranslate"><p>给定一个未排序的整数数组，找到最长递增子序列的个数。</p>
+
+<p><strong>示例 1:</strong></p>
+
+<pre><strong>输入:</strong> [1,3,5,4,7]
+<strong>输出:</strong> 2
+<strong>解释:</strong> 有两个最长递增子序列，分别是 [1, 3, 4, 7] 和[1, 3, 5, 7]。
+</pre>
+
+<p><strong>示例 2:</strong></p>
+
+<pre><strong>输入:</strong> [2,2,2,2,2]
+<strong>输出:</strong> 5
+<strong>解释:</strong> 最长递增子序列的长度是1，并且存在5个子序列的长度为1，因此输出5。
+</pre>
+
+<p><strong>注意:</strong>&nbsp;给定的数组长度不超过 2000 并且结果一定是32位有符号整数。</p>
+</div>
+
+## 思路
+[套路解决最长子序列等一类问题](https://leetcode-cn.com/problems/longest-consecutive-sequence/solution/tao-lu-jie-jue-zui-chang-zi-xu-lie-deng-yi-lei-wen/)
+1. dp[i] 表示以 nums[i] 这个数结尾的最长递增子序列的长度
+2. 状态转移方程 `dp[i] = max(dp[i], dp[j] + 1) for j in [0, i)` ,dp[i] > dp[j]
+3. dp数组应该全部初始化为1，因为子序列最少也要包含自己，所以长度最小为1
+4. 另开一个数组dpCount记录组合数，如果`dp[j] + 1 > dp[i]`，更新dp[i]，且组合数和dpCount[j]一致；如果`dp[j] + 1 == dp[i]`，则表示有另外一组dp[j]可以与nums[i]组合为最长，组合数应加上dpCount[j]；小于则不计
+
+## 代码
+```c
+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
+int findNumberOfLIS(int* nums, int numsSize){
+    int subLen = 0;
+    int dp[2000] = {1}; // 只能初始化dp[0] = 1，其余为默认值;只能用{0}初始化
+    int dpCount[2000] = {1};
+    int res = 0;
+    int maxIdx = 0;
+
+    for (int i = 0; i < 2000; i++) {
+        dp[i] = 1;
+        dpCount[i] = 1;
+    }
+    for (int i = 0; i < numsSize; i++) {
+        for (int j = 0; j < i; j++) {
+            if (nums[i] > nums[j]) {
+                if (dp[j] + 1 > dp[i]) {
+                    dp[i] = dp[j] + 1;
+                    dpCount[i] = dpCount[j]; // 首次找到以nums[i]为结尾的LIS，继承j处LIS组合数
+                } else if (dp[j] + 1 == dp[i]){
+                    dpCount[i] += dpCount[j]; // 这个长度已经找到过一次，还有其他组合可以与nums[i]组合为最长，加上j处的LIS组合数
+                }
+            }
+        }
+    }
+    for (int i = 0; i < numsSize; i++) {
+        subLen = MAX(dp[i], subLen);
+    }
+    for (int i = 0; i < numsSize; i++) {
+        if (dp[i] == subLen) {
+            res += dpCount[i];
+        }
+    }
+    return res;
+}
+```
