@@ -1,4 +1,4 @@
-## [题目描述(简单)](https://leetcode-cn.com/problems/template/)
+## [实现strStr()(简单)](https://leetcode-cn.com/problems/template/)
 <p>实现&nbsp;<a href="https://baike.baidu.com/item/strstr/811469">strStr()</a>&nbsp;函数。</p>
 
 <p>给定一个&nbsp;haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回&nbsp; <strong>-1</strong>。</p>

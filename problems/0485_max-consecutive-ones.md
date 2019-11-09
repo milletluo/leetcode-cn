@@ -1,4 +1,4 @@
-## [题目描述(简单)](https://leetcode-cn.com/problems/max-consecutive-ones/)
+## [最大连续1的个数(简单)](https://leetcode-cn.com/problems/max-consecutive-ones/)
 <p>给定一个二进制数组， 计算其中最大连续1的个数。</p>
 
 <p><strong>示例 1:</strong></p>

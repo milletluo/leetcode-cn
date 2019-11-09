@@ -1,4 +1,4 @@
-## [题目描述(简单)](https://leetcode-cn.com/problems/array-partition-i/)
+## [数组拆分I(简单)](https://leetcode-cn.com/problems/array-partition-i/)
 <p>给定长度为&nbsp;<strong>2n&nbsp;</strong>的数组, 你的任务是将这些数分成&nbsp;<strong>n </strong>对, 例如 (a<sub>1</sub>, b<sub>1</sub>), (a<sub>2</sub>, b<sub>2</sub>), ..., (a<sub>n</sub>, b<sub>n</sub>) ，使得从1 到&nbsp;n 的 min(a<sub>i</sub>, b<sub>i</sub>) 总和最大。</p>
 
 <p><strong>示例 1:</strong></p>

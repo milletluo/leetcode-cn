@@ -1,4 +1,4 @@
-## [题目描述(中等)](https://leetcode-cn.com/problems/template/)
+## [长度最小的子数组(中等)](https://leetcode-cn.com/problems/template/)
 <p>给定一个含有&nbsp;<strong>n&nbsp;</strong>个正整数的数组和一个正整数&nbsp;<strong>s ，</strong>找出该数组中满足其和<strong> ≥ s </strong>的长度最小的连续子数组<strong>。</strong>如果不存在符合条件的连续子数组，返回 0。</p>
 
 <p><strong>示例:&nbsp;</strong></p>

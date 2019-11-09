@@ -1,4 +1,4 @@
-## [题目描述(简单)](https://leetcode-cn.com/problems/add-binary/)
+## [二进制求和(简单)](https://leetcode-cn.com/problems/add-binary/)
 <p>给定两个二进制字符串，返回他们的和（用二进制表示）。</p>
 
 <p>输入为<strong>非空</strong>字符串且只包含数字&nbsp;<code>1</code>&nbsp;和&nbsp;<code>0</code>。</p>

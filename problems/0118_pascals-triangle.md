@@ -1,4 +1,4 @@
-## [题目描述(简单)](https://leetcode-cn.com/problems/pascals-triangle/)
+## [杨辉三角(简单)](https://leetcode-cn.com/problems/pascals-triangle/)
 <p>给定一个非负整数&nbsp;<em>numRows，</em>生成杨辉三角的前&nbsp;<em>numRows&nbsp;</em>行。</p>
 
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif" alt=""></p>

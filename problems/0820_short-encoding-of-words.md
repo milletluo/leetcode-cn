@@ -1,4 +1,4 @@
-## [题目描述(中等)](https://leetcode-cn.com/problems/short-encoding-of-words/)
+## [单词的压缩编码(中等)](https://leetcode-cn.com/problems/short-encoding-of-words/)
 <div class="notranslate"><p>给定一个单词列表，我们将这个列表编码成一个索引字符串&nbsp;<code>S</code>&nbsp;与一个索引列表 <code>A</code>。</p>
 
 <p>例如，如果这个列表是 <code>["time", "me", "bell"]</code>，我们就可以将其表示为 <code>S = "time#bell#"</code> 和 <code>indexes = [0, 2, 5]</code>。</p>

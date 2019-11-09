@@ -1,4 +1,4 @@
-## [题目描述(简单)](https://leetcode-cn.com/problems/number-of-recent-calls/)
+## [最近的请求次数(简单)](https://leetcode-cn.com/problems/number-of-recent-calls/)
 <div class="notranslate"><p>写一个&nbsp;<code>RecentCounter</code>&nbsp;类来计算最近的请求。</p>
 
 <p>它只有一个方法：<code>ping(int t)</code>，其中&nbsp;<code>t</code>&nbsp;代表以毫秒为单位的某个时间。</p>

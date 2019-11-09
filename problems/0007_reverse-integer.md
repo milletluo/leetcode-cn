@@ -1,4 +1,4 @@
-## [题目描述(简单)](https://leetcode-cn.com/problems/reverse-integer/)
+## [整数反转(简单)](https://leetcode-cn.com/problems/reverse-integer/)
 <p>给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。</p>
 <p><strong>示例&nbsp;1:</strong></p>
 <pre><strong>输入:</strong> 123

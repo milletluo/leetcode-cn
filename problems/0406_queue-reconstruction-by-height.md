@@ -1,4 +1,4 @@
-## [题目描述(中等)](https://leetcode-cn.com/problems/queue-reconstruction-by-height/)
+## [根据身高重建队列(中等)](https://leetcode-cn.com/problems/queue-reconstruction-by-height/)
 <div class="notranslate"><p>假设有打乱顺序的一群人站成一个队列。 每个人由一个整数对<code>(h, k)</code>表示，其中<code>h</code>是这个人的身高，<code>k</code>是排在这个人前面且身高大于或等于<code>h</code>的人数。 编写一个算法来重建这个队列。</p>
 
 <p><strong>注意：</strong><br>

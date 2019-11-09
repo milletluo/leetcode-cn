@@ -1,4 +1,4 @@
-## [题目描述(简单)](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
+## [反转字符串中的单词III(简单)](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
 <p>给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。</p>
 
 <p><strong>示例&nbsp;1:</strong></p>

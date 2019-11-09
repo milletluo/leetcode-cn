@@ -1,4 +1,4 @@
-## [题目描述(中等)](https://leetcode-cn.com/problems/remove-sub-folders-from-the-filesystem/)
+## [删除子文件夹(中等)](https://leetcode-cn.com/problems/remove-sub-folders-from-the-filesystem/)
 <div class="notranslate"><p>你是一位系统管理员，手里有一份文件夹列表 <code>folder</code>，你的任务是要删除该列表中的所有 <strong>子文件夹</strong>，并以 <strong>任意顺序</strong> 返回剩下的文件夹。</p>
 
 <p>我们这样定义「子文件夹」：</p>
